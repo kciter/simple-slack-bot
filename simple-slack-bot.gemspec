@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.email = 'kciter@naver.com'
 
   s.required_rubygems_version = '>= 2.0.0'
-  s.files = `git ls-files -z`.split("\x0")
+  s.files = `git ls-files`.split("\n")
   s.require_paths = ['lib']
 
   s.homepage = 'http://github.com/kciter/simple-slack-bot'
