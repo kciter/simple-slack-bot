@@ -14,7 +14,9 @@ module SlackBot
     def add_command(regex)
       command = Command.new(self)
       command.regex = regex
-      yield(command)
+      command.action = lambda { |data|
+        yield(data)
+      }
       @commands << command
     end
 

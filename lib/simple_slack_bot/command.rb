@@ -19,20 +19,5 @@ module SlackBot
       return if @action.nil?
       @action.call(data)
     end
-
-    def message(channel, text)
-      @bot_client.message(channel, text)
-    end
-
-    def query(query)
-      result = @bot_client.query(query)
-      result
-    end
-
-    def query_first(query)
-      @bot_client.query(query).each do |row|
-        return row
-      end
-    end
   end
 end
