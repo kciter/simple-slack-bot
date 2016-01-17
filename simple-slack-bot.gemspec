@@ -17,4 +17,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eventmachine', '~> 1.0', '>= 1.0.9'
   s.add_dependency 'faye-websocket', '~> 0.10.2'
   # s.add_dependency 'rufus-scheduler', '~> 3.2.0'
+
+  s.add_development_dependency 'bundler'
+  s.add_development_dependency 'rake'
 end
