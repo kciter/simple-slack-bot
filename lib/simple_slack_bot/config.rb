@@ -16,6 +16,16 @@ module SlackBot
 
     attr_accessor(*Config::ATTRIBUTES)
   end
+
+  class << self
+    def configure
+      block_given? ? yield(Config) : Config
+    end
+
+    def config
+      Config
+    end
+  end
 end
 
 SlackBot::Config.reset()
