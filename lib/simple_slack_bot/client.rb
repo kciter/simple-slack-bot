@@ -2,6 +2,7 @@
 require 'slack-ruby-client'
 
 module SlackBot
+
   class Client
     attr_accessor :slack_web_client, :slack_realtime_client
     attr_accessor :commands

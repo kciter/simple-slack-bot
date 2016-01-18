@@ -9,12 +9,11 @@ module SlackBot
         :token
     ]
 
-    def reset
-      self.debug = false
-      self.join_message = 'Hello!'
-    end
-
     attr_accessor(*Config::ATTRIBUTES)
+
+    self.debug = false
+    self.join_message = 'Hello!'
+    self.token = 'TOKEN'
   end
 
   class << self
@@ -27,5 +26,3 @@ module SlackBot
     end
   end
 end
-
-SlackBot::Config.reset()
