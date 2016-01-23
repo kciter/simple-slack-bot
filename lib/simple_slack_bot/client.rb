@@ -1,8 +1,6 @@
-
 require 'slack-ruby-client'
 
 module SlackBot
-
   class Client
     attr_accessor :slack_web_client, :slack_realtime_client
     attr_accessor :commands
@@ -15,9 +13,7 @@ module SlackBot
     def add_command(regex)
       command = Command.new(self)
       command.regex = regex
-      command.action = lambda { |data|
-        yield(data)
-      }
+      command.action = -> (data) { yield(data) }
       @commands << command
     end
 
@@ -27,8 +23,8 @@ module SlackBot
         return
       end
 
-      self.slack_init
-      self.message_event_init
+      slack_init
+      message_event_init
 
       EM.run do
         @slack_realtime_client.start!
@@ -73,14 +69,12 @@ module SlackBot
         puts data if config.debug.eql?(true)
 
         case data['subtype']
-          when 'channel_join' then
-            client.message channel: data['channel'], text: config.join_message
+        when 'channel_join' then
+          client.message channel: data['channel'], text: config.join_message
         end
 
         @commands.each do |command|
-          if command.match?(data['text'])
-            command.execute(data)
-          end
+          command.execute(data) if command.match?(data['text'])
         end
       end
     end
