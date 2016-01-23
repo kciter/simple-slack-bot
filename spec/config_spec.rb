@@ -3,9 +3,9 @@ require 'spec_helper'
 describe SlackBot::Config do
   describe '#initialize' do
     it 'sets config' do
-      expect(SlackBot::config.join_message).to eq 'Hello!'
-      expect(SlackBot::config.debug).to eq false
-      expect(SlackBot::config.token).to eq 'TOKEN'
+      expect(SlackBot.config.join_message).to eq 'Hello!'
+      expect(SlackBot.config.debug).to eq false
+      expect(SlackBot.config.token).to eq 'TOKEN'
     end
   end
 

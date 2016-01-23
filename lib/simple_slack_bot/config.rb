@@ -1,6 +1,6 @@
 module SlackBot
   module Config
-    module_function
+    extend self
 
     ATTRIBUTES = [
       :debug,
@@ -14,6 +14,8 @@ module SlackBot
     self.join_message = 'Hello!'
     self.token = 'TOKEN'
   end
+
+  module_function
 
   def configure
     block_given? ? yield(Config) : Config
