@@ -7,7 +7,7 @@ module SlackBot
     end
 
     def match?(str)
-      (@regex.nil? || @regex.match(str).nil?) ? true : false
+      (@regex.nil? || @regex.match(str).nil?) ? false : true
     end
 
     def execute(data)
