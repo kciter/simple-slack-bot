@@ -1,12 +1,11 @@
-
 module SlackBot
   module Config
-    extend self
+    module_function
 
     ATTRIBUTES = [
-        :debug,
-        :join_message,
-        :token
+      :debug,
+      :join_message,
+      :token
     ]
 
     attr_accessor(*Config::ATTRIBUTES)
@@ -16,13 +15,11 @@ module SlackBot
     self.token = 'TOKEN'
   end
 
-  class << self
-    def configure
-      block_given? ? yield(Config) : Config
-    end
+  def configure
+    block_given? ? yield(Config) : Config
+  end
 
-    def config
-      Config
-    end
+  def config
+    Config
   end
 end
